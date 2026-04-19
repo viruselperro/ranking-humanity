@@ -158,9 +158,7 @@ let apiKey = '';
 let cfgOpen = true;
 
 // Detecta si está corriendo en local o en producción
-const BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-  ? 'http://localhost:3000'
-  : '';
+const BASE_URL = 'https://noisy-mouse-b9a6.eliaselputomejor.workers.dev';
 
 function toggleCfg() {
   cfgOpen = !cfgOpen;
@@ -204,7 +202,7 @@ async function addPlayer() {
 
 async function fetchRank(gameName, tagLine, alias) {
   const res = await fetch(
-    `${BASE_URL}/api/player?gameName=${encodeURIComponent(gameName)}&tagLine=${encodeURIComponent(tagLine)}`,
+    `${BASE_URL}?gameName=${encodeURIComponent(gameName)}&tagLine=${encodeURIComponent(tagLine)}`,
     { headers: { 'x-api-key': apiKey } }
   );
   const data = await res.json();
