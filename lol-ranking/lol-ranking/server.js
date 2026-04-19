@@ -50,8 +50,9 @@ app.get('/api/player', async (req, res) => {
       wins: sq ? sq.wins : 0,
       losses: sq ? sq.losses : 0,
     });
-  } catch (e) {
-    res.status(500).json({ error: 'Error interno del servidor.' });
+ } catch (e) {
+    console.error('ERROR DETALLADO:', e.message, e.stack);
+    res.status(500).json({ error: e.message });
   }
 });
 
