@@ -12,7 +12,7 @@ const RIOT_KEY = process.env.RIOT_API_KEY || '';
 
 app.get('/api/player', async (req, res) => {
   const { gameName, tagLine } = req.query;
-  const apiKey = req.headers['x-api-key'] || RIOT_KEY;
+  const apiKey = RIOT_KEY || req.headers['x-api-key'];
   if (!gameName || !tagLine) return res.status(400).json({ error: 'Faltan parámetros.' });
   try {
     const acctRes = await fetch(
